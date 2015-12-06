@@ -1,7 +1,6 @@
 "use strict";
 
 const SEQUENCES = ['ab', 'cd', 'pq', 'xy'];
-
 const strings = require('fs').readFileSync('input/5', 'utf8');
 
 class SantaString {
@@ -11,14 +10,11 @@ class SantaString {
 	}
 
 	_countVowels() {
-		// regex seems more appropriate here
 		return (this.text.match(/[aeiou]/gi) || []).length >= 3;
 	}
 
 	_containsTwoLettersInARow() {
-		return this.text.split('').reduce(function (agg, element) { 
-			return (agg === true || agg === element) ? true : element; 
-		}) === true;
+		return (this.text.match(/([a-z])\1/g) || []).length > 0;
 	}
 
 	_containsSequence() {
@@ -35,12 +31,6 @@ class SantaString {
 		return this._countVowels() && this._containsTwoLettersInARow() && this._containsSequence();
 	}
 }
-
-//console.log("ugknbfddgicrmopn: true === " + new SantaString("ugknbfddgicrmopn").isNice());
-//console.log("aaa: true === " + new SantaString("aaa").isNice());
-//console.log("jchzalrnumimnmhp: false === " + new SantaString("jchzalrnumimnmhp").isNice());
-//console.log("haegwjzuvuyypxyu: false === " + new SantaString("haegwjzuvuyypxyu").isNice());
-//console.log("dvszwmarrgswjxmb: false === " + new SantaString("dvszwmarrgswjxmb").isNice());
 
 console.log(strings.split('\n').reduce(function(agg, element) {
 	return new SantaString(element).isNice() ? ++agg : agg;
