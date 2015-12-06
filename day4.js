@@ -2,10 +2,9 @@
 const md5 = require("md5"); // npm install md5
 const key = "bgvyzdsv";
 
-function puzzle(startsWith) {
+function puzzle(beginning) {
 	let i = 0;
-	const length = startsWith.length;
-	while (md5(key + i++).substr(0, length) != startsWith);
+	while (!md5(key + i++).startsWith(beginning));
 	return --i;
 }
 
