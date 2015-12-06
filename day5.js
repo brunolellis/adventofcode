@@ -1,6 +1,5 @@
 "use strict";
 
-const VOWELS = ['a', 'e', 'i', 'o', 'u'];
 const SEQUENCES = ['ab', 'cd', 'pq', 'xy'];
 
 const strings = require('fs').readFileSync('input/5', 'utf8');
@@ -12,9 +11,8 @@ class SantaString {
 	}
 
 	_countVowels() {
-		return this.text.split('').reduce(function (agg, element) { 
-			return VOWELS.includes(element) ? ++agg : agg; 
-		}, 0) >= 3;
+		// regex seems more appropriate here
+		return (this.text.match(/[aeiou]/gi) || []).length >= 3;
 	}
 
 	_containsTwoLettersInARow() {
