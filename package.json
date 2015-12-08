@@ -1,0 +1,28 @@
+{
+  "name": "adventofcode",
+  "version": "1.0.0",
+  "description": "Solutions for advent of code 2015 series.",
+  "main": "day1.js",
+  "dependencies": {
+    "fs": "^0.0.2",
+    "md5": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunolellis/adventofcode.git"
+  },
+  "keywords": [
+    "adventofcode",
+    "js"
+  ],
+  "author": "Bruno Lellis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brunolellis/adventofcode/issues"
+  },
+  "homepage": "https://github.com/brunolellis/adventofcode#readme"
+}
