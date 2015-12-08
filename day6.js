@@ -48,6 +48,24 @@ class LightCommand {
 	}
 }
 
+class LightBrightnessCommand extends LightCommand {
+	constructor(line) {
+		super(line);
+	}
+
+	_on(value) {
+		return 1 + value;
+	}
+
+	_off(value) {
+		return --value > 0 ? value : 0;
+	}
+
+	_toggle(value) {
+		return value + 2;
+	}
+}
+
 function _createLights(size) {
     let lights = new Array(size);
     for (let i = 0; i < size; i++) {
@@ -57,10 +75,16 @@ function _createLights(size) {
 }
 
 let lights = _createLights(1000);
-
 strings.split('\n').forEach(function(element) {
 	new LightCommand(element).run();
 });
 
 // join + split converts 2d array to 1d array
 console.log('part 1: ' + lights.join(',').split(',').reduce((agg, element) => Number(agg) + Number(element)));
+
+lights = _createLights(1000);
+strings.split('\n').forEach(function(element) {
+	new LightBrightnessCommand(element).run();
+});
+
+console.log('part 2: ' + lights.join(',').split(',').reduce((agg, element) => Number(agg) + Number(element)));
