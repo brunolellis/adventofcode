@@ -19,9 +19,7 @@ class SantaString {
 
 	_containsSequence() {
 		let text = this.text;
-		return SEQUENCES.reduce(function(agg, element) { 
-			return (agg || text.includes(element)); 
-		}, false) === false;
+		return !(SEQUENCES.reduce((agg, element) => (agg || text.includes(element)), false));
 	}
 
 	isNice() {
@@ -47,10 +45,8 @@ class SantaString {
 	}
 }
 
-console.log('part 1: ' + strings.split('\n').reduce(function(agg, element) {
-	return new SantaString(element).isNice() ? ++agg : agg;
-}, 0));
+console.log('part 1: ' + strings.split('\n').reduce(
+	(agg, element) => new SantaString(element).isNice() ? ++agg : agg, 0));
 
-console.log('part 2: ' + strings.split('\n').reduce(function(agg, element) {
-	return new SantaString(element).isNicePart2() ? ++agg : agg;
-}, 0));
+console.log('part 2: ' + strings.split('\n').reduce(
+	(agg, element) => new SantaString(element).isNicePart2() ? ++agg : agg, 0));
